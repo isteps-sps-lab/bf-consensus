@@ -1,6 +1,6 @@
-# [BF] Consensus
+# [BF] Worker Data Importer
 
-This repository describes how to use the Docker image for the *consensus* component, as part of the Cognitive Human Robot Interaction (C-HRI) scenario defined within the Better Factory project. The deployment is provided by means of Docker Compose, and the set of initialized components is depicted in the picture here below:
+This repository describes how to use the Docker image for the *worker-data-importer* component, as part of the Cognitive Human Robot Interaction (C-HRI) scenario defined within the Better Factory project. The deployment is provided by means of Docker Compose, and the set of initialized components is depicted in the picture here below:
 
 ![docker-deployment](./docker-deployment.png)
 
@@ -8,8 +8,8 @@ The blue-colored components represent the core components for which SUPSI provid
 
 > NOTE: In this deployment version, the only external dependencies that is available only in a private registry is *models*. The *models* image is provided and maintained by Holonix (HOL) within the Better Factory project.
 
-### consensus
-The *consensus* component downloads the worker responses collected with the "Consensus" questionnaire (GForm). Each response contains static data about the worker, which are pushed to the *models* component by means of its REST API. A cron job is exploited to download new responses.
+### worker-data-importer
+The *worker-data-importer* component downloads the worker responses collected with the "Consensus" questionnaire (GForm). Each response contains static data about the worker, which are pushed to the *models* component by means of its REST API. A cron job is exploited to download new responses.
 
 ### Dependencies
 

@@ -1,9 +1,9 @@
 version: '2'
 services:
 
-  consensus:
+  worker_data_importer:
     image: registry.gitlab.com/isteps-sps-lab/human-robot-interaction/better-factory/consensus:0.1.0
-    container_name: consensus
+    container_name: worker-data-importer
     environment:
         SPREADSHEET: $SPREADSHEET
         MODELS_URL: $MODELS_URL
