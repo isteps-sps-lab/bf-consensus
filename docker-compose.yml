@@ -1,7 +1,7 @@
 version: '2'
 services:
 
-  worker_data_importer:
+  worker-data-importer:
     image: registry.gitlab.com/isteps-sps-lab/human-robot-interaction/better-factory/consensus:0.1.0
     container_name: worker-data-importer
     environment:
@@ -60,6 +60,10 @@ services:
     restart: on-failure
     volumes:
       - models_db_data:/var/lib/mysql:rw
+
+networks:
+  default:
+    name: betterfactory_chri
 
 volumes:
   models_db_data:
