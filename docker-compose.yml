@@ -2,11 +2,11 @@ version: '2'
 services:
 
   worker-data-importer:
-    image: registry.gitlab.com/isteps-sps-lab/human-robot-interaction/better-factory/consensus:0.1.0
+    image: docker.ramp.eu/supsi-pvt/worker-data-importer:0.1.1
     container_name: worker-data-importer
     environment:
-        SPREADSHEET: $SPREADSHEET
-        MODELS_URL: $MODELS_URL
+        SPREADSHEET: "google spreadsheet name"
+        MODELS_URL: "http://models:8080/rest/"
         MODELS_USER: $BF_USER
         MODELS_PASSWORD: $BF_PASSWORD
         CRONTAB_SCHEDULE: "* */4 * * *"
@@ -18,7 +18,7 @@ services:
 
   models:
     container_name: models
-    image: registry.gitlab.com/complemant/integration/data-models:latest
+    image: docker.ramp.eu/betterfactory/data-models:1.0.0
     environment:
       ADMIN_PASSWORD: $BF_PASSWORD
       ADMIN_USERNAME: $BF_USER
@@ -34,7 +34,7 @@ services:
       MQTT_PORT: 1883
       MQTT_USER: $BF_USER
       MYSQL_DB: $MODELS_MYSQL_DATABASE
-      MYSQL_HOST: models_db
+      MYSQL_HOST: models-db
       MYSQL_PASS: $BF_PASSWORD
       MYSQL_PORT: 3306
       MYSQL_USER: $BF_USER
@@ -47,9 +47,9 @@ services:
     volumes:
       - ./init-data:/var/human/init-data:rw
     depends_on:
-      - models_db
+      - models-db
 
-  models_db:
+  models-db:
     container_name: models-db
     image: mysql:5.7
     environment:
